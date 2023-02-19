@@ -1,10 +1,12 @@
 const { Schema, model } = require('mongoose');
+const reactionSchema = require('./reaction');
 
 const thoughtSchema = new Schema(
   {
     thoughtText: {
       type: String,
       required: true,
+      max_length: 280
       //need to add char range limit betw 1 and 280 characters
     },
     createdAt: {
