@@ -33,6 +33,13 @@ const thoughtSchema = new Schema(
   }
 );
 
+userSchema
+  .virtual('reactuonCount')
+  // Getter
+  .get(function () {
+    return `${this.reactions.length}`;
+  });
+
 const thought = model('thought', thoughtSchema);
 
 module.exports = thought;
