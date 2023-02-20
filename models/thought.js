@@ -1,17 +1,19 @@
 const { Schema, model } = require('mongoose');
 const reactionSchema = require('./reaction');
+const timestamp = require("../utils/timestamp");
 
 const thoughtSchema = new Schema(
   {
     thoughtText: {
       type: String,
       required: true,
-      max_length: 280
-      //need to add char range limit betw 1 and 280 characters
+      minLength: 1,
+      maxLength: 280,
     },
     createdAt: {
       type: Date,
       default: Date.now(),
+      get: time => timestamp(time)
       //need to add getter method to format the timestamp on query
     },
     userName: {
@@ -19,10 +21,7 @@ const thoughtSchema = new Schema(
       required: true,
     },
     reactions: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'thought',
-      },
+     reactionSchema
     ],
   },
   {
@@ -40,6 +39,6 @@ userSchema
     return `${this.reactions.length}`;
   });
 
-const thought = model('thought', thoughtSchema);
+const Thought = model('thought', thoughtSchema);
 
-module.exports = thought;
+module.exports = Thought;

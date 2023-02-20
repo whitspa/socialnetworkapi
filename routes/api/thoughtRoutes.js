@@ -9,6 +9,8 @@ const {
 router.route('/').get(getThoughts).post(createThought);
 
 // /api/users/:userId
-router.route('/:userId').get(getSingleThought);
+router.route('/:userId').get(getSingleThought).put(updateThought).post(addReacton)
+
+router.route("/:userId/reactions/:reactionId").delete(deleteReaction)
 
 module.exports = router;
