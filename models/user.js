@@ -30,10 +30,28 @@ const userSchema = new Schema(
     },
  { 
 toJSON: {
+  virtuals: true,
+},
+id: false,
+
+toJSON: {
       getters: true,
     },
   }
 );
+
+userSchema
+  .virtual('friendsCount')
+  // Getter
+  .get(function () {
+    return `${this.friends.length}`;
+  });
+  // Setter to set the first and last name
+  // .set(function (v) {
+  //   const first = v.split(' ')[0];
+  //   const last = v.split(' ')[1];
+  //   this.set({ first, last });
+  // });
 
 const user = model('user', userSchema);
 
