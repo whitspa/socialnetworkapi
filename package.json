@@ -1,5 +1,35 @@
 {
+  "name": "socialnetworkapi",
+  "version": "1.0.0",
+  "description": "social network backend using mongoDB",
+  "main": "index.js",
   "dependencies": {
-    "moment": "^2.29.4"
+    "express": "^4.18.2",
+    "moment": "^2.29.4",
+    "mongoose": "^6.10.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "develop": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/whitspa/socialnetworkapi.git"
+  },
+  "keywords": [
+    "mongoDB",
+    "mongoose",
+    "node.js",
+    "insomnia"
+  ],
+  "author": "whit spaulding",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/whitspa/socialnetworkapi/issues"
+  },
+  "homepage": "https://github.com/whitspa/socialnetworkapi#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }

@@ -32,8 +32,8 @@ const thoughtSchema = new Schema(
   }
 );
 
-userSchema
-  .virtual('reactuonCount')
+thoughtSchema
+  .virtual('reactionCount')
   // Getter
   .get(function () {
     return `${this.reactions.length}`;
