@@ -18,8 +18,6 @@ router.route('/:userId').get(getSingleUser)
 
 router.route('/:userId/friends/:friendsId');
 delete(deleteFriend);
-//Friends virtual calls for objectid not friendsID? How to delete one Friend instance vs all friends
-//Post route to create a friend?
-//Addtl code for friennd count
+
 
 module.exports = router;
