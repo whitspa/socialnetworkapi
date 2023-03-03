@@ -3,8 +3,8 @@ const { User, Thought } = require('../models');
 module.exports = {
   getUsers(req, res) {
     User.find()
-      .populate({ path: 'users', select: '-__v' })
-      .then((users) => res.json(user))
+      .populate({ path:'thoughts', select: '-__v' })
+      .then((users) => res.json(users))
       .catch((err) => {
         console.error({ message: err });
         return res.status(500).json(err);
@@ -12,11 +12,10 @@ module.exports = {
   },
   getSingleUser(req, res) {
     User.findOne({ _id: req.params.userId })
-      .populate({ path: 'user', select: '-__v' })
+      .populate({ path: 'thoughts', select: '-__v' })
       .then((user) =>
-        !post
-          ? res.status(404).json({ message: 'No user with that ID' })
-          : res.json(post)
+     
+          res.json(user)
       )
       .catch((err) => res.status(500).json(err));
   },
@@ -57,7 +56,7 @@ module.exports = {
     console.log(req.body);
     User.findOneAndUpdate(
       { _id: req.params.userId },
-      { $addToSet: { friends: req.body } },
+      { $addToSet: { friends: req.params.friendsId } },
       { runValidators: true, new: true }
     )
       .then((userdata) =>
