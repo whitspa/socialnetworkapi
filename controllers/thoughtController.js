@@ -71,7 +71,10 @@ module.exports = {
       .then((thoughtdata) =>
         res.json(thoughtdata)
       )
-      .catch((err) => res.status(500).json(err));
+      .catch((err) => {
+        console.log("Err",err,"-------")
+        res.status(500).json(err)
+      });
   },
 
   deleteReaction(req, res) {
