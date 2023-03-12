@@ -1,3 +1,4 @@
+//In this model I created the schema and defined the fields for thoughts. Note the virtual at the bottom for counting reactions
 const { Schema, model } = require('mongoose');
 const reactionSchema = require('./reaction');
 const timestamp = require("../utils/timestamp");
@@ -14,7 +15,7 @@ const thoughtSchema = new Schema(
       type: Date,
       default: Date.now(),
       get: time => timestamp(time)
-      //need to add getter method to format the timestamp on query
+   
     },
     userName: {
       type: String,

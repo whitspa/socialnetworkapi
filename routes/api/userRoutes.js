@@ -1,3 +1,4 @@
+//this file is where I set up the http/URL CRUD route logic for users and friends
 const router = require('express').Router();
 const {
   getSingleUser,

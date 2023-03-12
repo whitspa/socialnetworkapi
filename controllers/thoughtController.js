@@ -1,3 +1,4 @@
+//this file is where I set up the database CRUD route logic for thoughts and reactions to thoughts
 const { Thought, User } = require('../models');
 
 module.exports = {
@@ -17,7 +18,7 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
-  // create a new thought
+  
   createThought(req, res) {
     Thought.create(req.body)
       .then((thought) => {

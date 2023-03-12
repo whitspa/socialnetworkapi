@@ -56,7 +56,7 @@
   * Email Address: whitspa64@duck.com
 
 ## Link to the walkthrough video demonstrating the functionality of the app
-
+https://drive.google.com/file/d/113WjFXDYsxbMCP15zEpLe0ZWGWsbYb0i/view
   
  
   A screen shot of the application is below:

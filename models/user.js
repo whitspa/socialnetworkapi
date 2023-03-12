@@ -1,3 +1,4 @@
+//In this model I created the schema and defined the fields for users. NOte the virtual at the bottom for counting friends
 const { Schema, model } = require('mongoose');
 ;
 
@@ -14,7 +15,7 @@ const userSchema = new Schema(
       unique: true,
       required: true,
       match:[/.+@.+\.com$/,"Please enter valid email"]
-      //    email validationm: true, utilize mongoose matching validation
+      //    email validation: true, utilize mongoose matching validation
     },
     thoughts: [
       {
@@ -44,12 +45,7 @@ userSchema
   .get(function () {
     return `${this.friends.length}`;
   });
-// Setter to set the first and last name
-// .set(function (v) {
-//   const first = v.split(' ')[0];
-//   const last = v.split(' ')[1];
-//   this.set({ first, last });
-// });
+
 
 const User = model('user', userSchema);
 

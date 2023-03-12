@@ -1,3 +1,4 @@
+//this file is where I set up the database CRUD route logic for users and friends
 const { User, Thought } = require('../models');
 
 module.exports = {
@@ -19,7 +20,7 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
-  // create a new user
+
   createUser(req, res) {
     User.create(req.body)
       .then((post) => res.json(post))
@@ -28,15 +29,10 @@ module.exports = {
 
   deleteUser(req, res) {
     User.findOneAndDelete({ _id: req.params.userId })
-      //.then((Thought) =>
-      // !Thought
-      //   ? res.status(404).json({ message: 'No user with that ID' })
-      //   : Thought.deleteMany({ _id: { $in: Thought.User } })
-      //)
       .then((data) => res.json({ message: 'Thought and User deleted!' }))
       .catch((err) => res.status(500).json(err));
   },
-  // Update a course
+ 
   updateUser(req, res) {
     User.findOneAndUpdate(
       { _id: req.params.userId },

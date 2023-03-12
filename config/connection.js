@@ -1,3 +1,4 @@
+//this is where I require mongoose and set up the mongoose environment
 const { connect, connection } = require('mongoose');
 
 const connectionString =
