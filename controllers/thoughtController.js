@@ -28,8 +28,8 @@ module.exports = {
         );
       })
       .then((user) =>
-       
-          res.json('Created the thought 🎉')
+
+        res.json('Created the thought 🎉')
       )
       .catch((err) => {
         console.log(err);
@@ -39,26 +39,21 @@ module.exports = {
 
   deleteThought(req, res) {
     Thought.findOneAndDelete({ _id: req.params.thoughtId })
-      //.then((Thought) =>
-      // !Thought
-      //   ? res.status(404).json({ message: 'No user with that ID' })
-      //   : Thought.deleteMany({ _id: { $in: Thought.User } })
-      //)
       .then((data) => res.json({ message: 'Thought deleted!' }))
       .catch((err) => res.status(500).json(err));
   },
-  updateThought(req,res) {
+  updateThought(req, res) {
     Thought.findOneAndUpdate(
-      {_id: req.params.thoughtId},
-      {$set: req.body},
-      {runValidators: true, new: true}
+      { _id: req.params.thoughtId },
+      { $set: req.body },
+      { runValidators: true, new: true }
     )
-    .then((thoughtdata) =>
-      !thoughtdata
-      ? res.status(404).json({message: 'no thought with this id!'})
-      : res.json(thoughtdata)
-    )
-    .catch((err) => res.status(500).json(err));
+      .then((thoughtdata) =>
+        !thoughtdata
+          ? res.status(404).json({ message: 'no thought with this id!' })
+          : res.json(thoughtdata)
+      )
+      .catch((err) => res.status(500).json(err));
   },
   addReaction(req, res) {
     console.log('You are adding a reaction');
@@ -72,17 +67,19 @@ module.exports = {
         res.json(thoughtdata)
       )
       .catch((err) => {
-        console.log("Err",err,"-------")
+        console.log("Err", err, "-------")
         res.status(500).json(err)
       });
   },
 
+
+
   deleteReaction(req, res) {
     console.log('You are deleting a reaction');
     console.log(req.body);
-    User.findOneAndUpdate(
-      { _id: req.params.userId },
-      { $pull: { reactions: req.params.friendsId } },
+    Thought.findOneAndUpdate(
+      { _id: req.params.thoughtId }, 
+      { $pull: { reactions: {reactionId: req.params.reactionId } }},                        
       { runValidators: true, new: true }
     )
       .then((thoughtdata) =>
